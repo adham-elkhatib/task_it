@@ -1,0 +1,6 @@
+flutter_application_id:
+  android:
+    name: "Kitty Care"
+    id: "com.example.kitty_care"
+
+#LINK - dart run flutter_application_id:main -f flutter_application_id.yaml

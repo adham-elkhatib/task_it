@@ -1,0 +1,81 @@
+name: task_it
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.8.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # 🔶 UI & Presentation
+  flutter_svg: ^2.0.5
+  google_fonts: ^4.0.4
+  introduction_screen: ^3.1.14
+  font_awesome_flutter: ^10.8.0
+  webview_flutter: ^4.11.0
+  form_controller: ^0.8.4
+
+  # 🔶 State Management & Architecture
+  flutter_bloc: ^8.1.2
+  get_it: ^8.0.3
+  dartz: ^0.10.1
+  equatable: ^2.0.7
+
+  # 🔶 Firebase Services
+  firebase_core: any
+  firebase: ^9.0.2
+  firebase_auth: ^5.3.1
+  firebase_crashlytics: ^4.3.9
+  firebase_database: ^11.0.2
+  firebase_messaging: ^15.2.5
+  cloud_firestore: ^5.4.4
+  firebase_storage: ^12.4.10
+  image_picker: ^1.1.2
+  # 🔶 Authentication & Permissions
+  google_sign_in: ^6.2.2
+  permission_handler: ^11.3.1
+
+  # 🔶 Networking & APIs
+  dio: ^5.7.0
+  http: ^0.13.0
+  data_connection_checker_tv: ^0.3.5-nullsafety
+
+  # 🔶 Localization & Internationalization
+  easy_localization: ^3.0.7+1
+  intl: ^0.20.2
+
+  # 🔶 Notifications
+  awesome_notifications: ^0.10.1
+
+  # 🔶 Utilities
+  logger: ^1.1.0
+  flutter_dotenv: ^5.0.2
+  shared_preferences: ^2.5.3
+  min_id: ^1.1.0
+  tflite_flutter: ^0.11.0
+  json_annotation: ^4.9.0
+
+  # 🔶 Development Utilities
+  stack_trace: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.1.8
+  auto_route_generator: ^5.0.3
+  flutter_application_id: ^2.1.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/translations/
+    - assets/images/
+    - assets/icons/
+    - dev.env
+    - prod.env
