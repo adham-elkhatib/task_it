@@ -13,6 +13,6 @@ class UpdateSubtaskUsecase extends UseCase<SubtaskEntity, SubtaskParams> {
 
   @override
   Future<Either<Failure, SubtaskEntity>> call(SubtaskParams params) {
-    return repository.updateSubtask(params: params);
+    return repository.updateSubtask(params);
   }
 }

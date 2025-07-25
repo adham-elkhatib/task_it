@@ -12,6 +12,6 @@ class DeleteSubtaskUsecase extends UseCase<void, SubtaskIdParams> {
 
   @override
   Future<Either<Failure, void>> call(SubtaskIdParams params) {
-    return repository.deleteSubtask(params: params);
+    return repository.deleteSubtask(params);
   }
 }

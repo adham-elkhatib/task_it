@@ -13,6 +13,6 @@ class CompleteTaskUsecase extends UseCase<TaskEntity, TaskIdParams> {
 
   @override
   Future<Either<Failure, TaskEntity>> call(TaskIdParams params) {
-    return repository.completeTask(params: params);
+    return repository.completeTask(params);
   }
 }

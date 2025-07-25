@@ -1,4 +1,4 @@
-import '../base_task_params.dart';
+import '../../base_task_params.dart';
 
 class TaskAttachmentIdParams extends BaseTaskParams {
   final String attachmentId;

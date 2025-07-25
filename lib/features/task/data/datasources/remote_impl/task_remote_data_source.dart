@@ -1,29 +1,32 @@
-import 'package:task_it/features/task/data/datasources/remote_impl/tasks/task_crud_remote_impl.dart';
+import 'package:task_it/features/task/data/datasources/remote_impl/remote_mixins.export.dart';
+import 'package:task_it/features/task/data/models/subtask_model.dart';
 
 import '../../../../../core/params/tasks/tasks_params.export.dart';
-import '../../../domain/entities/subtask_entity.dart';
+import '../../models/checklist_item_model.dart';
+import '../../models/reminder_model.dart';
+import '../../models/task_attachment_model.dart';
+import '../../models/task_comment_model.dart';
 import '../../models/task_model.dart';
 import '../base_task_remote_context.dart';
 
 abstract class TaskRemoteDataSource {
   // ===== TASKS ===== //
-
   // CRUD
-  Future<TaskModel> createTask(CreateTaskParams params);
+  Future<TaskModel> getTask(String taskId);
 
-  Future<TaskModel> updateTask(UpdateTaskParams params);
+  Future<List<TaskModel>> getTasksByProjectId(String projectId);
 
-  Future<void> deleteTask(TaskIdParams params);
+  Future<List<TaskModel>> getTasksByUserId(String userId);
 
-  Future<TaskModel> getTask(GetTaskParams params);
+  Future<TaskModel> createTask(TaskModel task);
 
-  Future<List<TaskModel>> getTasksByProjectId(ProjectIdParams params);
+  Future<TaskModel> updateTask(TaskModel task);
 
-  Future<List<TaskModel>> getTasksByUserId(UserIdParams params);
+  Future<void> deleteTask(String taskId);
 
-  Future<TaskModel> completeTask(TaskIdParams params);
+  Future<TaskModel> completeTask(TaskModel task);
 
-  Future<TaskModel> unCompleteTask(TaskIdParams params);
+  Future<TaskModel> unCompleteTask(TaskModel task);
 
   // Assignees
   Future<TaskModel> addTaskAssignee(TaskAssigneeParams params);
@@ -36,23 +39,23 @@ abstract class TaskRemoteDataSource {
   Future<TaskModel> removeTaskTag(TaskTagParams params);
 
   // Comments
-  Future<TaskModel> addTaskComment(TaskCommentParams params);
+  Future<TaskModel> addTaskComment(CommentModel params);
+
+  Future<TaskModel> updateTaskComment(CommentModel params);
 
   Future<TaskModel> deleteTaskComment(TaskCommentIdParams params);
 
-  Future<TaskModel> updateTaskComment(TaskCommentParams params);
-
   // Attachments
-  Future<TaskModel> addTaskAttachment(TaskAttachmentParams params);
+  Future<TaskModel> addTaskAttachment(AttachmentModel model);
 
-  Future<TaskModel> updateTaskAttachment(TaskAttachmentParams params);
+  Future<TaskModel> updateTaskAttachment(AttachmentModel model);
 
-  Future<TaskModel> deleteTaskAttachment(TaskAttachmentIdParams params);
+  Future<void> deleteTaskAttachment(TaskAttachmentIdParams params);
 
   // Reminders
-  Future<TaskModel> addTaskReminder(TaskReminderParams params);
+  Future<TaskModel> addTaskReminder(ReminderModel model);
 
-  Future<TaskModel> removeTaskReminder(TaskReminderParams params);
+  Future<TaskModel> removeTaskReminder(TaskReminderIdParams params);
 
   // Labels
   Future<TaskModel> addTaskLabel(TaskLabelParams params);
@@ -60,82 +63,84 @@ abstract class TaskRemoteDataSource {
   Future<TaskModel> removeTaskLabel(TaskLabelParams params);
 
   // Checklist
-  Future<TaskModel> addChecklist(TaskChecklistParams params);
+  Future<TaskModel> addChecklist(ChecklistItemModel model);
 
-  Future<TaskModel> updateChecklist(TaskChecklistParams params);
+  Future<TaskModel> updateChecklist(ChecklistItemModel model);
 
-  Future<TaskModel> deleteChecklist(TaskChecklistIdParams params);
+  Future<TaskModel> deleteChecklist(TaskChecklistItemIdParams params);
 
   // ===== SUBTASKS ===== //
   // CRUD
-  Future<List<SubtaskEntity>> getSubtasks(String taskId);
+  Future<List<SubtaskModel>> getSubtasksByTaskId(String taskId);
 
-  Future<SubtaskEntity> addSubtask(SubtaskParams params);
+  Future<SubtaskModel> addSubtask(SubtaskModel params);
 
-  Future<SubtaskEntity> updateSubtask(SubtaskParams params);
+  Future<SubtaskModel> updateSubtask(SubtaskModel params);
 
   Future<void> deleteSubtask(SubtaskIdParams params);
 
   // Assignees
-  Future<TaskModel> addSubtaskAssignee(SubtaskAssigneeParams params);
+  Future<SubtaskModel> addSubtaskAssignee(SubtaskAssigneeParams params);
 
-  Future<TaskModel> removeSubtaskAssignee(SubtaskAssigneeParams params);
+  Future<SubtaskModel> removeSubtaskAssignee(SubtaskAssigneeParams params);
 
   // Tags
-  Future<TaskModel> addSubtaskTag(SubtaskTagParams params);
+  Future<SubtaskModel> addSubtaskTag(SubtaskTagParams params);
 
-  Future<TaskModel> removeSubtaskTag(SubtaskTagParams params);
+  Future<SubtaskModel> removeSubtaskTag(SubtaskTagParams params);
 
   // Labels
-  Future<TaskModel> addSubtaskLabel(SubtaskLabelParams params);
+  Future<SubtaskModel> addSubtaskLabel(SubtaskLabelParams params);
 
-  Future<TaskModel> removeSubtaskLabel(SubtaskLabelParams params);
+  Future<SubtaskModel> removeSubtaskLabel(SubtaskLabelParams params);
 
   // Comments
-  Future<TaskModel> addSubtaskComment(SubtaskCommentParams params);
+  Future<SubtaskModel> addSubtaskComment(CommentModel model);
 
-  Future<TaskModel> updateSubtaskComment(SubtaskCommentParams params);
+  Future<SubtaskModel> updateSubtaskComment(CommentModel model);
 
-  Future<TaskModel> deleteSubtaskComment(SubtaskCommentIdParams params);
+  Future<SubtaskModel> deleteSubtaskComment(SubtaskCommentIdParams params);
 
   // Attachments
-  Future<TaskModel> addSubtaskAttachment(SubtaskAttachmentParams params);
+  Future<SubtaskModel> addSubtaskAttachment(AttachmentModel model);
 
-  Future<TaskModel> updateSubtaskAttachment(SubtaskAttachmentParams params);
+  Future<SubtaskModel> updateSubtaskAttachment(AttachmentModel model);
 
-  Future<TaskModel> deleteSubtaskAttachment(SubtaskAttachmentIdParams params);
+  Future<SubtaskModel> deleteSubtaskAttachment(
+    SubtaskAttachmentIdParams params,
+  );
 
   // Reminders
-  Future<TaskModel> addSubtaskReminder(SubtaskReminderParams params);
+  Future<SubtaskModel> addSubtaskReminder(ReminderModel model);
 
-  Future<TaskModel> removeSubtaskReminder(SubtaskReminderParams params);
+  Future<SubtaskModel> removeSubtaskReminder(SubtaskReminderParams params);
 
   // Checklist
-  Future<TaskModel> addSubtaskChecklist(SubtaskChecklistParams params);
+  Future<SubtaskModel> addSubtaskChecklist(ChecklistItemModel model);
 
-  Future<TaskModel> updateSubtaskChecklist(SubtaskChecklistParams params);
+  Future<SubtaskModel> updateSubtaskChecklist(ChecklistItemModel model);
 
-  Future<TaskModel> deleteSubtaskChecklist(SubtaskChecklistIdParams params);
+  Future<SubtaskModel> deleteSubtaskChecklist(SubtaskChecklistIdParams params);
 }
 
 class TaskRemoteDataSourceImpl extends BaseTaskRemoteContext
     with
         // ===== Tasks =====
-        TaskCrudRemoteImpl // TaskAssigneesRemoteImpl,
-        // TaskAttachmentsRemoteImpl,
-        // TaskChecklistRemoteImpl,
-        // TaskCommentsRemoteImpl,
-        // TaskLabelsRemoteImpl,
-        // TaskRemindersRemoteImpl,
-        // TaskTagsRemoteImpl,
+        TaskCrudRemoteImpl,
+        TaskAssigneesRemoteImpl,
+        TaskAttachmentsRemoteImpl,
+        TaskChecklistRemoteImpl,
+        TaskCommentsRemoteImpl,
+        TaskLabelsRemoteImpl,
+        TaskRemindersRemoteImpl,
+        TaskTagsRemoteImpl,
         // ===== Subtasks =====
-        // SubtaskCrudRemoteImpl,
-        // SubtaskAssigneesRemoteImpl,
-        // SubtaskAttachmentsRemoteImpl,
-        // SubtaskChecklistRemoteImpl,
-        // SubtaskCommentsRemoteImpl,
-        // SubtaskLabelsRemoteImpl,
-        // SubtaskRemindersRemoteImpl,
-        // SubtaskTagsRemoteImpl
-        implements
-        TaskRemoteDataSource {}
+        SubtaskCrudRemoteImpl,
+        SubtaskAssigneesRemoteImpl,
+        SubtaskAttachmentsRemoteImpl,
+        SubtaskChecklistRemoteImpl,
+        SubtaskCommentsRemoteImpl,
+        SubtaskLabelsRemoteImpl,
+        SubtaskRemindersRemoteImpl,
+        SubtaskTagsRemoteImpl
+    implements TaskRemoteDataSource {}

@@ -13,6 +13,6 @@ class CreateTaskUsecase extends UseCase<TaskEntity, CreateTaskParams> {
 
   @override
   Future<Either<Failure, TaskEntity>> call(CreateTaskParams params) {
-    return repository.createTask(params: params);
+    return repository.createTask(params);
   }
 }

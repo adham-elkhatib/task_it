@@ -1,4 +1,4 @@
-import '../base_task_params.dart';
+import '../../base_task_params.dart';
 
 class TaskCommentParams extends BaseTaskParams {
   final String content;

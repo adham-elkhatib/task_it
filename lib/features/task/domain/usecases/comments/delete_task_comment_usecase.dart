@@ -12,6 +12,6 @@ class DeleteTaskCommentUsecase extends UseCase<void, TaskCommentIdParams> {
 
   @override
   Future<Either<Failure, void>> call(TaskCommentIdParams params) {
-    return repository.deleteTaskComment(params: params);
+    return repository.deleteTaskComment(params);
   }
 }

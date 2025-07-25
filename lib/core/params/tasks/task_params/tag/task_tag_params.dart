@@ -1,4 +1,4 @@
-import '../base_task_params.dart';
+import '../../base_task_params.dart';
 
 class TaskTagParams extends BaseTaskParams {
   final String tag;

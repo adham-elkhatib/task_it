@@ -2,18 +2,17 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../../core/Services/Error Handling/exports.error_handling.dart';
 import '../../../../../core/params/tasks/tasks_params.export.dart';
-import '../../entities/task_entity.dart';
 import '../../repositories/task_repository.dart';
 import '../base/task_usecase.dart';
 
 class DeleteSubtaskAttachmentUsecase
-    extends UseCase<TaskEntity, SubtaskAttachmentIdParams> {
+    extends UseCase<void, SubtaskAttachmentIdParams> {
   final TaskRepository repository;
 
   DeleteSubtaskAttachmentUsecase(this.repository);
 
   @override
-  Future<Either<Failure, TaskEntity>> call(SubtaskAttachmentIdParams params) {
-    return repository.deleteSubtaskAttachment(params: params);
+  Future<Either<Failure, void>> call(SubtaskAttachmentIdParams params) {
+    return repository.deleteSubtaskAttachment(params);
   }
 }

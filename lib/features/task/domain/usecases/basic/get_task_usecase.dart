@@ -13,6 +13,6 @@ class GetTaskUseCase extends UseCase<TaskEntity, GetTaskParams> {
 
   @override
   Future<Either<Failure, TaskEntity>> call(GetTaskParams params) {
-    return repository.getTask(params: params);
+    return repository.getTask(params);
   }
 }

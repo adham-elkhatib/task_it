@@ -1,5 +1,5 @@
 //t2 Core Packages Imports
-//t2 Dependancies Imports
+//t2 Dependencies Imports
 //t3 Services
 //t3 Models
 //t1 Exports
@@ -45,7 +45,7 @@ class FirestoreRepo<T> {
         if (generateId) {
           id = await _generateId();
         } else {
-          throw ServerException(
+          throw FirestoreException(
             message: "ID '$id' already exists and generation is off.",
           );
         }
@@ -93,7 +93,7 @@ class FirestoreRepo<T> {
             if (generateId) {
               id = await _generateId();
             } else {
-              throw ServerException(
+              throw FirestoreException(
                 message: "ID '$id' already exists and generation is off.",
               );
             }
@@ -263,12 +263,12 @@ class FirestoreRepo<T> {
     }
   }
 
-  //t2 Multible
-  /// Delete multible items from the data storage.
+  //t2 Multiple
+  /// Delete multiple items from the data storage.
   Future<void> deleteMultiple(List<String> ids, {bool batched = false}) async {
     //
     try {
-      await _firestore.deleteMultible(collectionId, ids, batched: batched);
+      await _firestore.deleteMultiple(collectionId, ids, batched: batched);
     } catch (e, s) {
       ErrorHandlingService.handle(
         e,

@@ -13,6 +13,6 @@ class UpdateTaskUsecase extends UseCase<TaskEntity, UpdateTaskParams> {
 
   @override
   Future<Either<Failure, TaskEntity>> call(UpdateTaskParams params) {
-    return repository.updateTask(params: params);
+    return repository.updateTask(params);
   }
 }

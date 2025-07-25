@@ -13,6 +13,6 @@ class DeleteSubtaskCommentUsecase
 
   @override
   Future<Either<Failure, void>> call(SubtaskCommentIdParams params) {
-    return repository.deleteSubtaskComment(params: params);
+    return repository.deleteSubtaskComment(params);
   }
 }

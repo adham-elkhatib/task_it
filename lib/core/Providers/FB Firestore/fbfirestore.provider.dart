@@ -299,7 +299,7 @@ class FirestoreProvider extends DataProvider {
         ErrorHandlingService.handle(
           e,
           s,
-          location: 'FirestoreProvider/updateMultible/batched',
+          location: 'FirestoreProvider/updateMultiple/batched',
         );
         rethrow;
       }
@@ -315,7 +315,7 @@ class FirestoreProvider extends DataProvider {
         ErrorHandlingService.handle(
           e,
           s,
-          location: 'FirestoreProvider/updateMultible',
+          location: 'FirestoreProvider/updateMultiple',
         );
         rethrow;
       }
@@ -338,8 +338,8 @@ class FirestoreProvider extends DataProvider {
     }
   }
 
-  //t1 Multible
-  Future<void> deleteMultible(
+  //t1 Multiple
+  Future<void> deleteMultiple(
     String collection,
     List<String> documentsIds, {
     bool batched = true,
@@ -359,7 +359,7 @@ class FirestoreProvider extends DataProvider {
         ErrorHandlingService.handle(
           e,
           s,
-          location: 'FirestoreProvider/deleteMultible/batched',
+          location: 'FirestoreProvider/deleteMultiple/batched',
         );
       }
     } else {
@@ -371,7 +371,7 @@ class FirestoreProvider extends DataProvider {
         ErrorHandlingService.handle(
           e,
           s,
-          location: 'FirestoreProvider/deleteMultible',
+          location: 'FirestoreProvider/deleteMultiple',
         );
       }
     }
@@ -387,7 +387,7 @@ class FirestoreProvider extends DataProvider {
       //t2 Getting
       QuerySnapshot<Map<String, dynamic>> snapshot = await ref.get();
       List<String> ids = snapshot.docs.map((e) => e.id).toList();
-      return await deleteMultible(collection, ids, batched: batched);
+      return await deleteMultiple(collection, ids, batched: batched);
     } catch (e, s) {
       ErrorHandlingService.handle(e, s, location: 'FirestoreProvider/clear');
     }

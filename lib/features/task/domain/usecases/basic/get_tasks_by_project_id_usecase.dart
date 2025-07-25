@@ -14,6 +14,6 @@ class GetTasksByProjectIdUsecase
 
   @override
   Future<Either<Failure, List<TaskEntity>>> call(ProjectIdParams params) {
-    return repository.getTasksByProjectId(params: params);
+    return repository.getTasksByProjectId(params);
   }
 }

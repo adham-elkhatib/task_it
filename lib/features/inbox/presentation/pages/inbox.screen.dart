@@ -1,11 +1,9 @@
 //t2 Core Packages Imports
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:task_it/features/task/domain/entities/task_entity.dart';
 
 import '../../../../core/widgets/section_placeholder.dart';
 import '../../../../core/widgets/section_title.dart';
-import '../../../project/domain/entities/status_enum.dart';
 
 //t2 Dependencies Imports
 //t3 Services
@@ -128,24 +126,25 @@ class _InboxScreenState extends State<InboxScreen> {
           if (allTaskSnapshot.connectionState == ConnectionState.done) {
             if (allTaskSnapshot.data != null) {
               DateTime now = DateTime.now();
+              // todo later
+              // doneTasks?.addAll(
+              //   allTaskSnapshot.data!.where(
+              //     (task) => task?.status == TaskStatus.done,
+              //   ),
+              // );
 
-              doneTasks?.addAll(
-                allTaskSnapshot.data!.where(
-                  (task) => task?.status == TaskStatus.done,
-                ),
-              );
-
-              overdueTasks?.addAll(
-                allTaskSnapshot.data!.where((task) {
-                  if (task?.deadline != null) {
-                    DateTime taskDeadline = DateFormat(
-                      'yyyy-MM-dd',
-                    ).parse(task!.deadline!);
-                    return taskDeadline.isBefore(now);
-                  }
-                  return false;
-                }),
-              );
+              // todo later
+              // overdueTasks?.addAll(
+              //   allTaskSnapshot.data!.where((task) {
+              //     if (task?.deadline != null) {
+              //       DateTime taskDeadline = DateFormat(
+              //         'yyyy-MM-dd',
+              //       ).parse(task!.deadline!);
+              //       return taskDeadline.isBefore(now);
+              //     }
+              //     return false;
+              //   }),
+              // );
             }
             return Padding(
               padding: const EdgeInsets.all(24.0),

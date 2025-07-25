@@ -7,7 +7,7 @@ class SubtaskModel extends SubtaskEntity {
     required super.id,
     required super.title,
     required super.isCompleted,
-    super.assigneeId,
+    super.assigneeIds,
     super.deadline,
   });
 
@@ -16,7 +16,7 @@ class SubtaskModel extends SubtaskEntity {
       id: map['id'] as String,
       title: map['title'] as String,
       isCompleted: map['isCompleted'] as bool,
-      assigneeId: map['assigneeId'] as String?,
+      assigneeIds: List<String>.from(map['assigneeIds'] ?? []),
       deadline: map['deadline'] != null
           ? DateTime.parse(map['deadline'])
           : null,
@@ -28,8 +28,8 @@ class SubtaskModel extends SubtaskEntity {
       'id': id,
       'title': title,
       'isCompleted': isCompleted,
-      'assigneeId': assigneeId,
-      'deadline': deadline?.toIso8601String(),
+      if (assigneeIds != null) 'assigneeIds': assigneeIds,
+      if (deadline != null) 'deadline': deadline!.toIso8601String(),
     };
   }
 
@@ -43,7 +43,7 @@ class SubtaskModel extends SubtaskEntity {
       id: entity.id,
       title: entity.title,
       isCompleted: entity.isCompleted,
-      assigneeId: entity.assigneeId,
+      assigneeIds: entity.assigneeIds,
       deadline: entity.deadline,
     );
   }
@@ -53,7 +53,7 @@ class SubtaskModel extends SubtaskEntity {
       id: id,
       title: title,
       isCompleted: isCompleted,
-      assigneeId: assigneeId,
+      assigneeIds: assigneeIds,
       deadline: deadline,
     );
   }

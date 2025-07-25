@@ -13,6 +13,6 @@ class GetTasksByUserIdUsecase extends UseCase<List<TaskEntity>, UserIdParams> {
 
   @override
   Future<Either<Failure, List<TaskEntity>>> call(UserIdParams params) {
-    return repository.getTasksByUserId(params: params);
+    return repository.getTasksByUserId(params);
   }
 }

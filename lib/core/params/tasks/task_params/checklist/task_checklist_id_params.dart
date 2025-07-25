@@ -1,4 +1,4 @@
-import '../base_task_params.dart';
+import '../../base_task_params.dart';
 
 class TaskChecklistIdParams extends BaseTaskParams {
   final String checklistId;
