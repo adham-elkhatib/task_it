@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:task_it/features/profile/domain/entities/user_entity.dart';
 
 import '../../../../data/model/project/project.model.dart';
-import '../../../../data/model/team/team.model.dart';
+import '../../../../data/model/space/space.model.dart';
 import '../../../task/domain/entities/task_entity.dart';
 
 part 'home_event.dart';
@@ -51,18 +51,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   //   List<String?>? projectIds = [];
   //   List<String?>? teamMembersIds = [];
   //
-  //   Team? team;
+  //   Team? space;
   //   String userId = AuthService().getCurrentUserId();
   //   Member? member = await MemberRepo().readSingle(userId);
   //
   //   if (member != null) {
   //     if (member.teamId != null) {
-  //       team = await TeamRepo().readSingle(member.teamId!);
-  //       if (team?.membersIds != null) {
-  //         teamMembersIds.addAll(team!.membersIds!);
+  //       space = await TeamRepo().readSingle(member.teamId!);
+  //       if (space?.membersIds != null) {
+  //         teamMembersIds.addAll(space!.membersIds!);
   //       }
-  //       if (team?.projectsIds != null) {
-  //         projectIds.addAll(team!.projectsIds!);
+  //       if (space?.projectsIds != null) {
+  //         projectIds.addAll(space!.projectsIds!);
   //       }
   //     }
   //   }
@@ -122,7 +122,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   //       }
   //     }
   //
-  //     emit(HomeLoaded(projects, members, tasks, team));
+  //     emit(HomeLoaded(projects, members, tasks, space));
   //   } catch (e) {
   //     emit(HomeError(e.toString()));
   //   }

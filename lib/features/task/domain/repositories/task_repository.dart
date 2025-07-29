@@ -4,6 +4,17 @@ import 'package:task_it/features/task/domain/entities/reminder_entity.dart';
 import 'package:task_it/features/task/domain/entities/tag_entity.dart';
 
 import '../../../../core/Services/Error Handling/errors/failure.dart';
+import '../../../../core/params/tasks/subtask_params/attachment/update_subtask_attachment_params.dart';
+import '../../../../core/params/tasks/subtask_params/checklist/update_subtask_checklist_params.dart';
+import '../../../../core/params/tasks/subtask_params/comment/update_subtask_comment_params.dart';
+import '../../../../core/params/tasks/subtask_params/crud/update_subtask_params.dart';
+import '../../../../core/params/tasks/subtask_params/label/subtask_label_id_params.dart';
+import '../../../../core/params/tasks/subtask_params/tag/subtask_tag_id_params.dart';
+import '../../../../core/params/tasks/task_params/attachment/update_task_attachment_params.dart';
+import '../../../../core/params/tasks/task_params/checklist/update_task_checklist_item_params.dart';
+import '../../../../core/params/tasks/task_params/comment/update_task_comment_params.dart';
+import '../../../../core/params/tasks/task_params/label/task_label_id_params.dart';
+import '../../../../core/params/tasks/task_params/tag/task_tag_id_params.dart';
 import '../../../../core/params/tasks/tasks_params.export.dart';
 import '../entities/checklist_item_entity.dart';
 import '../entities/comment_entity.dart';
@@ -35,22 +46,22 @@ abstract class TaskRepository {
 
   // ===== TASKS: Comments =====
   Future<Either<Failure, CommentEntity>> addTaskComment(
-    TaskCommentParams params,
+    CreateTaskCommentParams params,
   );
 
   Future<Either<Failure, CommentEntity>> updateTaskComment(
-    TaskCommentParams params,
+    UpdateTaskCommentParams params,
   );
 
   Future<Either<Failure, void>> deleteTaskComment(TaskCommentIdParams params);
 
   // ===== TASKS: Attachments =====
   Future<Either<Failure, AttachmentEntity>> addTaskAttachment(
-    TaskAttachmentParams params,
+    CreateTaskAttachmentParams params,
   );
 
   Future<Either<Failure, AttachmentEntity>> updateTaskAttachment(
-    TaskAttachmentParams params,
+    UpdateTaskAttachmentParams params,
   );
 
   Future<Either<Failure, void>> deleteTaskAttachment(
@@ -70,13 +81,13 @@ abstract class TaskRepository {
 
   Future<Either<Failure, LabelEntity>> addTaskLabel(TaskLabelParams params);
 
-  Future<Either<Failure, void>> removeTaskLabel(TaskLabelParams params);
+  Future<Either<Failure, void>> removeTaskLabel(TaskLabelIdParams params);
 
   // ===== TASKS: Tags =====
 
   Future<Either<Failure, TagEntity>> addTaskTag(TaskTagParams params);
 
-  Future<Either<Failure, void>> removeTaskTag(TaskTagParams params);
+  Future<Either<Failure, void>> removeTaskTag(TaskTagIdParams params);
 
   // ===== TASKS: Reminders =====
 
@@ -84,15 +95,15 @@ abstract class TaskRepository {
     TaskReminderParams params,
   );
 
-  Future<Either<Failure, void>> removeTaskReminder(TaskReminderParams params);
+  Future<Either<Failure, void>> removeTaskReminder(TaskReminderIdParams params);
 
   // ===== TASKS: Checklist =====
   Future<Either<Failure, ChecklistItemEntity>> addChecklistItem(
-    TaskChecklistParams params,
+    CreateTaskChecklistItemParams params,
   );
 
   Future<Either<Failure, ChecklistItemEntity>> updateChecklistItem(
-    TaskChecklistParams params,
+    UpdateTaskChecklistItemParams params,
   );
 
   Future<Either<Failure, void>> deleteChecklistItem(
@@ -104,19 +115,21 @@ abstract class TaskRepository {
     SubtaskIdParams params,
   );
 
-  Future<Either<Failure, SubtaskEntity>> addSubtask(SubtaskParams params);
+  Future<Either<Failure, SubtaskEntity>> addSubtask(CreateSubtaskParams params);
 
-  Future<Either<Failure, SubtaskEntity>> updateSubtask(SubtaskParams params);
+  Future<Either<Failure, SubtaskEntity>> updateSubtask(
+    UpdateSubtaskParams params,
+  );
 
   Future<Either<Failure, void>> deleteSubtask(SubtaskIdParams params);
 
   // ===== SUBTASKS: Comments =====
   Future<Either<Failure, CommentEntity>> addSubtaskComment(
-    SubtaskCommentParams params,
+    CreateSubtaskCommentParams params,
   );
 
   Future<Either<Failure, CommentEntity>> updateSubtaskComment(
-    SubtaskCommentParams params,
+    UpdateSubtaskCommentParams params,
   );
 
   Future<Either<Failure, void>> deleteSubtaskComment(
@@ -124,12 +137,12 @@ abstract class TaskRepository {
   );
 
   // ===== SUBTASKS: Attachments =====
-  Future<Either<Failure, SubtaskEntity>> addSubtaskAttachment(
-    SubtaskAttachmentParams params,
+  Future<Either<Failure, AttachmentEntity>> addSubtaskAttachment(
+    CreateSubtaskAttachmentParams params,
   );
 
   Future<Either<Failure, AttachmentEntity>> updateSubtaskAttachment(
-    SubtaskAttachmentParams params,
+    UpdateSubtaskAttachmentParams params,
   );
 
   Future<Either<Failure, void>> deleteSubtaskAttachment(
@@ -151,13 +164,13 @@ abstract class TaskRepository {
     SubtaskLabelParams params,
   );
 
-  Future<Either<Failure, void>> removeSubtaskLabel(SubtaskLabelParams params);
+  Future<Either<Failure, void>> removeSubtaskLabel(SubtaskLabelIdParams params);
 
   // ===== SUBTASKS: Tags =====
 
   Future<Either<Failure, TagEntity>> addSubtaskTag(SubtaskTagParams params);
 
-  Future<Either<Failure, void>> removeSubtaskTag(SubtaskTagParams params);
+  Future<Either<Failure, void>> removeSubtaskTag(SubtaskTagIdParams params);
 
   // ===== SUBTASKS: Reminders =====
 
@@ -171,11 +184,11 @@ abstract class TaskRepository {
 
   // ===== SUBTASKS: Checklist =====
   Future<Either<Failure, ChecklistItemEntity>> addSubtaskChecklist(
-    SubtaskChecklistParams params,
+    CreateSubtaskChecklistParams params,
   );
 
   Future<Either<Failure, ChecklistItemEntity>> updateSubtaskChecklist(
-    SubtaskChecklistParams params,
+    UpdateSubtaskChecklistParams params,
   );
 
   Future<Either<Failure, void>> deleteSubtaskChecklist(

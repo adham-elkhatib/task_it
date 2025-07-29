@@ -22,8 +22,8 @@ class TaskDetailModel extends TaskDetailEntity {
     super.comments = const [],
     super.checklist = const [],
     super.reminders = const [],
-    super.labelIds = const [],
-    super.tagIds = const [],
+    super.labels = const [],
+    super.tags = const [],
     super.subtasks,
     super.commentsCount,
     super.attachmentsCount,
@@ -158,8 +158,8 @@ class TaskDetailModel extends TaskDetailEntity {
           },
         )
         .toList(),
-    'labelIds': labelIds,
-    'tagIds': tagIds,
+    'labelIds': labels,
+    'tagIds': tags,
     'subtasks': subtasks
         ?.map(
           (e) => {
@@ -198,8 +198,8 @@ class TaskDetailModel extends TaskDetailEntity {
       comments: entity.comments,
       checklist: entity.checklist,
       reminders: entity.reminders,
-      labelIds: entity.labelIds,
-      tagIds: entity.tagIds,
+      labelIds: entity.labels,
+      tagIds: entity.tags,
       subtasks: entity.subtasks,
       commentsCount: entity.commentsCount,
       attachmentsCount: entity.attachmentsCount,
@@ -225,8 +225,8 @@ class TaskDetailModel extends TaskDetailEntity {
       comments: comments,
       checklist: checklist,
       reminders: reminders,
-      labelIds: labelIds,
-      tagIds: tagIds,
+      labels: labels,
+      tags: tags,
       subtasks: subtasks,
       commentsCount: commentsCount,
       attachmentsCount: attachmentsCount,

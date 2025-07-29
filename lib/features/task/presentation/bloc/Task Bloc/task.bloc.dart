@@ -22,7 +22,7 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
               ]);
               if (projectTasks != null) {
                 tasks.addAll(
-                  projectTasks.where((task) => task != null).cast<Task>(),
+                  projectTasks.where((task) => task != null).cast<TaskEntity>(),
                 );
               }
             }

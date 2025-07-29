@@ -1,13 +1,12 @@
-import '../../../../../features/project/domain/entities/priority_enum.dart';
-import '../../../../../features/project/domain/entities/status_enum.dart';
+
 
 class CreateTaskParams {
   final String title;
   final String? projectId;
   final List<String>? assigneeId;
   final DateTime? deadline;
-  final TaskStatus? taskStatus;
-  final Priority? priority;
+  final int? taskStatus;
+  final int? priority;
 
   const CreateTaskParams({
     required this.title,

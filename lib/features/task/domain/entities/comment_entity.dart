@@ -7,8 +7,11 @@ class CommentEntity extends Equatable {
   final DateTime createdAt;
   final DateTime? updatedAt;
 
+  // ✅ Future Features
   // todo add mentions: List<String>
   // todo add isEdited: bool
+  // final List<String> mentions;
+  // final bool isEdited;
 
   const CommentEntity({
     required this.id,
@@ -16,6 +19,8 @@ class CommentEntity extends Equatable {
     required this.content,
     required this.createdAt,
     this.updatedAt,
+    // this.mentions = const [],
+    // this.isEdited = false,
   });
 
   CommentEntity copyWith({
@@ -24,6 +29,8 @@ class CommentEntity extends Equatable {
     String? content,
     DateTime? createdAt,
     DateTime? updatedAt,
+    // List<String>? mentions,
+    // bool? isEdited,
   }) {
     return CommentEntity(
       id: id ?? this.id,
@@ -31,9 +38,15 @@ class CommentEntity extends Equatable {
       content: content ?? this.content,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      // mentions: mentions ?? this.mentions,
+      // isEdited: isEdited ?? this.isEdited,
     );
   }
 
   @override
-  List<Object?> get props => [id, userId, content, createdAt, updatedAt];
+  List<Object?> get props => [
+    id, userId, content, createdAt, updatedAt,
+    // mentions,
+    // isEdited,
+  ];
 }

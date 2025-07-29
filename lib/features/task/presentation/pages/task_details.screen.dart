@@ -104,16 +104,6 @@ class _TaskDetailsScreenState extends State<TaskDetailsScreen> {
     //!SECTION
   }
 
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    //
-    //SECTION - State Variables initializations & Listeners
-    //t2 --State
-    //t2 --State
-    //!SECTION
-  }
-
   //SECTION - Stateless functions
   //!SECTION
   updateTask() async {

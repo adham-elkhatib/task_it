@@ -5,13 +5,13 @@ import '../../../../../core/params/tasks/tasks_params.export.dart';
 import '../../repositories/task_repository.dart';
 import '../base/task_usecase.dart';
 
-class RemoveTaskReminderUsecase extends UseCase<void, TaskReminderParams> {
+class RemoveTaskReminderUsecase extends UseCase<void, TaskReminderIdParams> {
   final TaskRepository repository;
 
   RemoveTaskReminderUsecase(this.repository);
 
   @override
-  Future<Either<Failure, void>> call(TaskReminderParams params) {
+  Future<Either<Failure, void>> call(TaskReminderIdParams params) {
     return repository.removeTaskReminder(params);
   }
 }

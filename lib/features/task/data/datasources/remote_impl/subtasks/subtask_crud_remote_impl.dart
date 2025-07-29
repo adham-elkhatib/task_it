@@ -3,7 +3,7 @@ import '../../../models/subtask_model.dart';
 import '../../base_task_remote_context.dart';
 
 mixin SubtaskCrudRemoteImpl on BaseTaskRemoteContext {
-  Future<List<SubtaskModel>> getSubtasksByTaskId(String taskId) {
+  Future<List<SubtaskModel>> getSubtasksByTaskId(SubtaskIdParams taskId) {
     // TODO: implement getSubtasks
     throw UnimplementedError();
   }

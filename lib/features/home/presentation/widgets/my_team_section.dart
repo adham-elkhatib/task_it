@@ -14,7 +14,7 @@ class MyTeamSection extends StatelessWidget {
     return Column(
       children: [
         SectionTitle(
-          title: "My team",
+          title: "My space",
           onPressed: () async {
             Navigator.push(
               context,
@@ -85,7 +85,7 @@ class MyTeamSection extends StatelessWidget {
                 ),
               )
             : const SectionPlaceholder(
-                title: 'Click the “+” icon to create your first team member.',
+                title: 'Click the “+” icon to create your first space member.',
               ),
       ],
     );

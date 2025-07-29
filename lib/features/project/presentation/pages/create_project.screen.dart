@@ -2,7 +2,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:form_controller/form_controller.dart';
 // import 'package:intl/intl.dart';
-// import 'package:task_it/data/model/team/team.model.dart';
+// import 'package:task_it/data/model/space/space.model.dart';
 // import 'package:task_it/data/Repositories/tasks_repo.dart';
 // import 'package:task_it/data/Repositories/team_repo.dart';
 // import 'package:task_it/data/Repositories/user_repo.dart';
@@ -29,7 +29,7 @@
 // class CreateProjectScreen extends StatefulWidget {
 //   //SECTION - Widget Arguments
 //   final UserEntity user;
-//   final team? team;
+//   final space? space;
 //   final List<UserEntity?>? teamMembers;
 //
 //   //!SECTION
@@ -37,7 +37,7 @@
 //   const CreateProjectScreen({
 //     Key? key,
 //     required this.user,
-//     required this.team,
+//     required this.space,
 //     required this.teamMembers,
 //   }) : super(key: key);
 //
@@ -120,14 +120,14 @@
 //       await UserRepo().updateSingle(widget.user.id, widget.user);
 //
 //       await TeamRepo().createSingle(
-//         team(id: teamId, teamOwnerId: widget.user.id, projectsIds: [projectId]),
+//         space(id: teamId, teamOwnerId: widget.user.id, projectsIds: [projectId]),
 //         itemId: teamId,
 //       );
 //     } else {
-//       widget.team?.projectsIds ??= [];
-//       widget.team?.projectsIds?.add(projectId);
+//       widget.space?.projectsIds ??= [];
+//       widget.space?.projectsIds?.add(projectId);
 //
-//       await TeamRepo().updateSingle(widget.user.teamId!, widget.team!);
+//       await TeamRepo().updateSingle(widget.user.teamId!, widget.space!);
 //     }
 //
 //     for (task task in createdTasks) {
@@ -905,7 +905,7 @@
 //                                               SnackbarHelper.showError(
 //                                                 context,
 //                                                 title:
-//                                                     "Assign task to a team member",
+//                                                     "Assign task to a space member",
 //                                               );
 //                                             }
 //                                             if (_taskFormKey.currentState!

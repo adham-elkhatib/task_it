@@ -1,10 +1,10 @@
 import '../../base_task_params.dart';
 
-class TaskAttachmentParams extends BaseTaskParams {
+class CreateTaskAttachmentParams extends BaseTaskParams {
   final String fileUrl;
   final String fileName;
 
-  const TaskAttachmentParams({
+  const CreateTaskAttachmentParams({
     required super.taskId,
     required this.fileUrl,
     required this.fileName,

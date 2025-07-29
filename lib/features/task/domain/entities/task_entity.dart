@@ -2,23 +2,26 @@ import 'package:equatable/equatable.dart';
 
 import '../../../project/domain/entities/priority_enum.dart';
 import '../../../project/domain/entities/status_enum.dart';
-import 'subtask_entity.dart';
 
-// For lightweight task view. See TaskDetailEntity for full info.
 class TaskEntity extends Equatable {
   final String id;
-  final String? title;
+  final String spaceId;
   final String? projectId;
-  final List<String> actionItemsIds;
-  final List<String>? assigneeIds;
-  final TaskStatus? taskStatus;
-  final DateTime? deadline;
-  final Priority? priority;
-  final bool? isCompleted;
 
-  final int? commentsCount;
-  final int? attachmentsCount;
-  final List<SubtaskEntity>? subtasks;
+  final String? title;
+  final String? description;
+  final DateTime? deadline;
+
+  final List<String> assigneeIds;
+  final List<String> subtaskIds;
+  final List<String> tagIds;
+  final List<String> actionItemsIds;
+
+  final TaskStatus taskStatus;
+  final Priority priority;
+
+  final int commentsCount;
+  final int attachmentsCount;
 
   final String? createdBy;
   final DateTime? createdAt;
@@ -27,17 +30,19 @@ class TaskEntity extends Equatable {
 
   const TaskEntity({
     required this.id,
-    required this.title,
-    required this.projectId,
+    required this.spaceId,
+    this.projectId,
+    this.title,
+    this.description,
+    this.deadline,
+    this.assigneeIds = const [],
+    this.subtaskIds = const [],
+    this.tagIds = const [],
     this.actionItemsIds = const [],
-    this.assigneeIds,
     this.taskStatus = TaskStatus.toDo,
     this.priority = Priority.low,
-    this.isCompleted = false,
-    this.deadline,
-    this.commentsCount,
-    this.attachmentsCount,
-    this.subtasks,
+    this.commentsCount = 0,
+    this.attachmentsCount = 0,
     this.createdBy,
     this.createdAt,
     this.updatedBy,
@@ -46,17 +51,19 @@ class TaskEntity extends Equatable {
 
   TaskEntity copyWith({
     String? id,
-    String? title,
+    String? spaceId,
     String? projectId,
-    List<String>? actionItemsIds,
-    List<String>? assigneeIds,
-    TaskStatus? taskStatus,
+    String? title,
+    String? description,
     DateTime? deadline,
+    List<String>? assigneeIds,
+    List<String>? subtaskIds,
+    List<String>? tagIds,
+    List<String>? actionItemsIds,
+    TaskStatus? taskStatus,
     Priority? priority,
-    bool? isCompleted,
     int? commentsCount,
     int? attachmentsCount,
-    List<SubtaskEntity>? subtasks,
     String? createdBy,
     DateTime? createdAt,
     String? updatedBy,
@@ -64,17 +71,19 @@ class TaskEntity extends Equatable {
   }) {
     return TaskEntity(
       id: id ?? this.id,
-      title: title ?? this.title,
+      spaceId: spaceId ?? this.spaceId,
       projectId: projectId ?? this.projectId,
-      actionItemsIds: actionItemsIds ?? this.actionItemsIds,
-      assigneeIds: assigneeIds ?? this.assigneeIds,
-      taskStatus: taskStatus ?? this.taskStatus,
+      title: title ?? this.title,
+      description: description ?? this.description,
       deadline: deadline ?? this.deadline,
+      assigneeIds: assigneeIds ?? this.assigneeIds,
+      subtaskIds: subtaskIds ?? this.subtaskIds,
+      tagIds: tagIds ?? this.tagIds,
+      actionItemsIds: actionItemsIds ?? this.actionItemsIds,
+      taskStatus: taskStatus ?? this.taskStatus,
       priority: priority ?? this.priority,
-      isCompleted: isCompleted ?? this.isCompleted,
       commentsCount: commentsCount ?? this.commentsCount,
       attachmentsCount: attachmentsCount ?? this.attachmentsCount,
-      subtasks: subtasks ?? this.subtasks,
       createdBy: createdBy ?? this.createdBy,
       createdAt: createdAt ?? this.createdAt,
       updatedBy: updatedBy ?? this.updatedBy,
@@ -85,17 +94,19 @@ class TaskEntity extends Equatable {
   @override
   List<Object?> get props => [
     id,
-    title,
+    spaceId,
     projectId,
-    actionItemsIds,
-    assigneeIds,
-    taskStatus,
+    title,
+    description,
     deadline,
+    assigneeIds,
+    subtaskIds,
+    tagIds,
+    actionItemsIds,
+    taskStatus,
     priority,
-    isCompleted,
     commentsCount,
     attachmentsCount,
-    subtasks,
     createdBy,
     createdAt,
     updatedBy,

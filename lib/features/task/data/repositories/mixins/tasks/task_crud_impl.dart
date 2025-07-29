@@ -5,22 +5,22 @@ import 'package:task_it/core/params/tasks/tasks_params.export.dart';
 import 'package:task_it/features/task/data/models/task_model.dart';
 import 'package:task_it/features/task/domain/entities/task_entity.dart';
 
+import '../../../../../project/domain/entities/priority_enum.dart';
+import '../../../../../project/domain/entities/status_enum.dart';
 import '../../base_task_repository_context.dart';
 
 mixin TaskCrudImpl on BaseTaskRepositoryContext {
-  Future<Either<Failure, TaskEntity>> createTask({
-    required CreateTaskParams params,
-  }) {
+  Future<Either<Failure, TaskEntity>> createTask(CreateTaskParams params) {
     String taskId = IdGeneratingService.generate();
     TaskModel task = TaskModel(
       id: taskId,
       title: params.title,
       projectId: params.projectId,
-      priority: params.priority,
+      priority: Priority.values[params.priority ?? 0],
       deadline: params.deadline,
       actionItemsIds: const [],
       assigneeIds: params.assigneeId,
-      taskStatus: params.taskStatus,
+      taskStatus: TaskStatus.values[params.taskStatus ?? 0],
     );
     return executeRemoteCall<TaskModel>(
       remoteCall: () => remoteDataSource.createTask(task),
@@ -45,17 +45,9 @@ mixin TaskCrudImpl on BaseTaskRepositoryContext {
     ).then((result) => result.map((model) => model.toEntity()));
   }
 
-  Future<Either<Failure, void>> deleteTask({required TaskIdParams params}) {
-    return executeRemoteCall<void>(
-      remoteCall: () => remoteDataSource.deleteTask(params.taskId),
-      onSuccess: (_) => localDataSource.deleteTask(params.taskId),
-      location: 'TaskRepo/deleteTask',
-    );
-  }
-
-  Future<Either<Failure, TaskEntity>> getTask({required GetTaskParams params}) {
+  Future<Either<Failure, TaskEntity>> getTask(GetTaskParams params) {
     return executeRemoteCall<TaskModel>(
-      remoteCall: () => remoteDataSource.getTask(params.taskId),
+      remoteCall: () => remoteDataSource.getTask(params),
       // onSuccess: (task) => localDataSource.cacheTask(task),
       location: 'TaskRepo/getTask',
     ).then((result) => result.map((model) => model.toEntity()));
@@ -65,7 +57,7 @@ mixin TaskCrudImpl on BaseTaskRepositoryContext {
     ProjectIdParams params,
   ) {
     return executeRemoteCall<List<TaskModel>>(
-      remoteCall: () => remoteDataSource.getTasksByProjectId(params.projectId),
+      remoteCall: () => remoteDataSource.getTasksByProjectId(params),
       location: 'TaskRepo/getTasksByProjectId',
     ).then(
       (result) =>
@@ -77,11 +69,19 @@ mixin TaskCrudImpl on BaseTaskRepositoryContext {
     UserIdParams params,
   ) {
     return executeRemoteCall<List<TaskModel>>(
-      remoteCall: () => remoteDataSource.getTasksByUserId(params.userId),
+      remoteCall: () => remoteDataSource.getTasksByUserId(params),
       location: 'TaskRepo/getTasksByUserId',
     ).then(
       (result) =>
           result.map((models) => models.map((e) => e.toEntity()).toList()),
+    );
+  }
+
+  Future<Either<Failure, void>> deleteTask(TaskIdParams params) {
+    return executeRemoteCall<void>(
+      remoteCall: () => remoteDataSource.deleteTask(params),
+      onSuccess: (_) => localDataSource.deleteTask(params.taskId),
+      location: 'TaskRepo/deleteTask',
     );
   }
 

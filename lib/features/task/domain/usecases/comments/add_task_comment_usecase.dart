@@ -6,13 +6,14 @@ import '../../entities/comment_entity.dart';
 import '../../repositories/task_repository.dart';
 import '../base/task_usecase.dart';
 
-class AddTaskCommentUseCase extends UseCase<CommentEntity, TaskCommentParams> {
+class AddTaskCommentUseCase
+    extends UseCase<CommentEntity, CreateTaskCommentParams> {
   final TaskRepository repository;
 
   AddTaskCommentUseCase(this.repository);
 
   @override
-  Future<Either<Failure, CommentEntity>> call(TaskCommentParams params) {
+  Future<Either<Failure, CommentEntity>> call(CreateTaskCommentParams params) {
     return repository.addTaskComment(params);
   }
 }

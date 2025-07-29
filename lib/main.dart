@@ -29,8 +29,7 @@ Future<void> main() async {
       providers: [
         BlocProvider(create: (_) => sl<AuthBloc>()..add(AuthCheckRequested())),
         BlocProvider(create: (_) => sl<HomeBloc>()),
-        // BlocProvider(create: (_) => sl<FeederBloc>()),
-        // BlocProvider(create: (_) => sl<MealsBloc>()),
+
         BlocProvider(create: (_) => sl<ProfileBloc>()),
       ],
       child: easy_localization.EasyLocalization(

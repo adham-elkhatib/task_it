@@ -1,14 +1,14 @@
-import '../../../../../../core/params/tasks/subtask_params/subtask_label_params.dart';
-import '../../../models/subtask_model.dart';
+import '../../../../../../core/params/tasks/subtask_params/label/subtask_label_id_params.dart';
+import '../../../models/label_model.dart';
 import '../../base_task_remote_context.dart';
 
 mixin SubtaskLabelsRemoteImpl on BaseTaskRemoteContext {
-  Future<SubtaskModel> addSubtaskLabel(SubtaskLabelParams params) {
+  Future<LabelModel> addSubtaskLabel(LabelModel params) {
     // TODO: implement addSubtaskLabel
     throw UnimplementedError();
   }
 
-  Future<SubtaskModel> removeSubtaskLabel(SubtaskLabelParams params) {
+  Future<void> removeSubtaskLabel(SubtaskLabelIdParams params) {
     // TODO: implement removeSubtaskLabel
     throw UnimplementedError();
   }

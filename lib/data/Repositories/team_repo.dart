@@ -1,5 +1,5 @@
 import '../../core/Providers/FB Firestore/fbfirestore_repo.dart';
-import '../Model/Team/team.model.dart';
+import '../Model/Team/space.model.dart';
 
 class TeamRepo extends FirestoreRepo<Team> {
   TeamRepo() : super('Teams');

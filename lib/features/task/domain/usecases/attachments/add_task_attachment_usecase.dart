@@ -7,13 +7,15 @@ import '../../repositories/task_repository.dart';
 import '../base/task_usecase.dart';
 
 class AddTaskAttachmentUsecase
-    extends UseCase<AttachmentEntity, TaskAttachmentParams> {
+    extends UseCase<AttachmentEntity, CreateTaskAttachmentParams> {
   final TaskRepository repository;
 
   AddTaskAttachmentUsecase(this.repository);
 
   @override
-  Future<Either<Failure, AttachmentEntity>> call(TaskAttachmentParams params) {
+  Future<Either<Failure, AttachmentEntity>> call(
+    CreateTaskAttachmentParams params,
+  ) {
     return repository.addTaskAttachment(params);
   }
 }

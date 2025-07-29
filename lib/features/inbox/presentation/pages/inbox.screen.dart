@@ -77,10 +77,10 @@ class _InboxScreenState extends State<InboxScreen> {
     allTasks?.clear();
 
     // if (widget.teamId != null) {
-    //   await TeamRepo().readSingle(widget.teamId!).then((team) async {
-    //     if (team != null) {
+    //   await TeamRepo().readSingle(widget.teamId!).then((space) async {
+    //     if (space != null) {
     //       Set<String?> uniqueProjectIds = Set<String?>.from(
-    //         team.projectsIds ?? [],
+    //         space.projectsIds ?? [],
     //       );
     //
     //       for (String? projectId in uniqueProjectIds) {

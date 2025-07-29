@@ -1,25 +1,19 @@
+import '../../../../../../core/params/tasks/tasks_params.export.dart';
 import '../../../models/task_model.dart';
 import '../../base_task_remote_context.dart';
 
 mixin TaskCrudRemoteImpl on BaseTaskRemoteContext {
-  Future<TaskModel> getTask(String taskId) {
+  Future<TaskModel> getTask(GetTaskParams taskId) {
     // TODO: implement getTask
     throw UnimplementedError();
   }
 
-  Future<List<TaskModel>> getTasks() async {
-    final response = await executeRemoteCall<List<TaskModel>>(
-      () => taskRepo.readAll(),
-    );
-    return response;
-  }
-
-  Future<List<TaskModel>> getTasksByProjectId(String projectId) {
+  Future<List<TaskModel>> getTasksByProjectId(ProjectIdParams projectId) {
     // TODO: implement getTasksByProjectId
     throw UnimplementedError();
   }
 
-  Future<List<TaskModel>> getTasksByUserId(String userId) {
+  Future<List<TaskModel>> getTasksByUserId(UserIdParams userId) {
     // TODO: implement getTasksByUserId
     throw UnimplementedError();
   }
@@ -29,13 +23,13 @@ mixin TaskCrudRemoteImpl on BaseTaskRemoteContext {
     return task;
   }
 
-  Future<void> deleteTask(String taskId) {
-    // TODO: implement deleteTask
+  Future<TaskModel> updateTask(TaskModel task) {
+    // TODO: implement updateTask
     throw UnimplementedError();
   }
 
-  Future<TaskModel> updateTask(TaskModel task) {
-    // TODO: implement updateTask
+  Future<void> deleteTask(TaskIdParams taskId) {
+    // TODO: implement deleteTask
     throw UnimplementedError();
   }
 

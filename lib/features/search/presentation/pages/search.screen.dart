@@ -52,11 +52,11 @@ class _SearchScreenState extends State<SearchScreen> {
     //
     //SECTION - State Variables initializations & Listeners
     //t2 --Controllers & Listeners
-    // TeamRepo().readSingle(widget.member.teamId!).then((team) {
+    // TeamRepo().readSingle(widget.member.teamId!).then((space) {
     //   setState(() {
-    //     if (team != null && team.projectsIds != null) {
-    //       projectIds = team.projectsIds ?? [];
-    //       memberIds = team.membersIds ?? [];
+    //     if (space != null && space.projectsIds != null) {
+    //       projectIds = space.projectsIds ?? [];
+    //       memberIds = space.membersIds ?? [];
     //     }
     //   });
     // });

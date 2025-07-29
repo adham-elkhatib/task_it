@@ -10,8 +10,18 @@ mixin SubtaskAssigneesImpl on BaseTaskRepositoryContext {
   Future<Either<Failure, SubtaskEntity>> addSubtaskAssignee(
     SubtaskAssigneeParams params,
   ) {
+    // todo add params
+
+    SubtaskModel subtask = SubtaskModel(
+      id: params.subtaskId,
+      title: "params.title",
+      assigneeIds: [],
+      deadline: DateTime.now(),
+      isCompleted: false,
+    );
+
     return executeRemoteCall<SubtaskModel>(
-      remoteCall: () => remoteDataSource.addSubtaskAssignee(params),
+      remoteCall: () => remoteDataSource.addSubtaskAssignee(subtask),
       // onSuccess: (task) => localDataSource.cacheTask(task),
       location: 'TaskRepo/addSubtaskAssignee',
     ).then((result) => result.map((model) => model.toEntity()));
@@ -20,8 +30,16 @@ mixin SubtaskAssigneesImpl on BaseTaskRepositoryContext {
   Future<Either<Failure, void>> removeSubtaskAssignee(
     SubtaskAssigneeParams params,
   ) {
+    // todo add params
+    SubtaskModel subtask = SubtaskModel(
+      id: params.subtaskId,
+      title: "params.title",
+      assigneeIds: [],
+      deadline: DateTime.now(),
+      isCompleted: false,
+    );
     return executeRemoteCall<void>(
-      remoteCall: () => remoteDataSource.removeSubtaskAssignee(params),
+      remoteCall: () => remoteDataSource.removeSubtaskAssignee(subtask),
       // onSuccess: (task) => localDataSource.cacheTask(task),
       location: 'TaskRepo/removeSubtaskAssignee',
     );

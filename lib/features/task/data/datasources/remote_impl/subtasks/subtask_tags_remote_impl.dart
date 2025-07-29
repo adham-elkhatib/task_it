@@ -1,14 +1,14 @@
-import '../../../../../../core/params/tasks/tasks_params.export.dart';
-import '../../../models/subtask_model.dart';
+import '../../../../../../core/params/tasks/subtask_params/tag/subtask_tag_id_params.dart';
+import '../../../models/tag_model.dart';
 import '../../base_task_remote_context.dart';
 
 mixin SubtaskTagsRemoteImpl on BaseTaskRemoteContext {
-  Future<SubtaskModel> addSubtaskTag(SubtaskTagParams params) {
+  Future<TagModel> addSubtaskTag(TagModel params) {
     // TODO: implement addSubtaskTag
     throw UnimplementedError();
   }
 
-  Future<SubtaskModel> removeSubtaskTag(SubtaskTagParams params) {
+  Future<void> removeSubtaskTag(SubtaskTagIdParams params) {
     // TODO: implement removeSubtaskTag
     throw UnimplementedError();
   }

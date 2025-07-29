@@ -1,15 +1,14 @@
 import '../../../../../../core/params/tasks/tasks_params.export.dart';
 import '../../../models/task_attachment_model.dart';
-import '../../../models/task_model.dart';
 import '../../base_task_remote_context.dart';
 
 mixin TaskAttachmentsRemoteImpl on BaseTaskRemoteContext {
-  Future<TaskModel> addTaskAttachment(AttachmentModel params) {
+  Future<AttachmentModel> addTaskAttachment(AttachmentModel model) {
     // TODO: implement addTaskAttachment
     throw UnimplementedError();
   }
 
-  Future<TaskModel> updateTaskAttachment(AttachmentModel params) {
+  Future<AttachmentModel> updateTaskAttachment(AttachmentModel model) {
     // TODO: implement updateTaskAttachment
     throw UnimplementedError();
   }

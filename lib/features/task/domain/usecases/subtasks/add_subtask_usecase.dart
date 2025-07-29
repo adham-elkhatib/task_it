@@ -6,13 +6,13 @@ import '../../entities/subtask_entity.dart';
 import '../../repositories/task_repository.dart';
 import '../base/task_usecase.dart';
 
-class AddSubtaskUsecase extends UseCase<SubtaskEntity, SubtaskParams> {
+class AddSubtaskUsecase extends UseCase<SubtaskEntity, CreateSubtaskParams> {
   final TaskRepository repository;
 
   AddSubtaskUsecase(this.repository);
 
   @override
-  Future<Either<Failure, SubtaskEntity>> call(SubtaskParams params) {
+  Future<Either<Failure, SubtaskEntity>> call(CreateSubtaskParams params) {
     return repository.addSubtask(params);
   }
 }
