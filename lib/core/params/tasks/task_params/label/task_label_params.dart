@@ -6,6 +6,8 @@ class TaskLabelParams extends BaseTaskParams {
 
   const TaskLabelParams({
     required super.taskId,
+    required super.spaceId,
+
     required this.label,
     required this.colorHex,
   });

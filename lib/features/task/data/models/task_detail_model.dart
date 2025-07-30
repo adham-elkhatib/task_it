@@ -13,12 +13,10 @@ class TaskDetailModel extends TaskDetailEntity {
     required super.id,
     super.title,
     super.projectId,
-    super.actionItemsIds,
     super.assigneeIds,
     super.taskStatus,
     super.deadline,
     super.priority,
-    super.isCompleted,
     super.comments = const [],
     super.checklist = const [],
     super.reminders = const [],
@@ -31,6 +29,7 @@ class TaskDetailModel extends TaskDetailEntity {
     super.createdAt,
     super.updatedBy,
     super.updatedAt,
+    required super.spaceId,
   });
 
   factory TaskDetailModel.fromMap(Map<String, dynamic> map) {
@@ -38,7 +37,7 @@ class TaskDetailModel extends TaskDetailEntity {
       id: map['id'] ?? '',
       title: map['title'],
       projectId: map['projectId'],
-      actionItemsIds: List<String>.from(map['actionItemsIds'] ?? []),
+      spaceId: map['spaceId'],
       assigneeIds: List<String>.from(map['assigneeIds'] ?? []),
       taskStatus: map['status'] != null
           ? TaskStatus.values[map['status']]
@@ -52,7 +51,6 @@ class TaskDetailModel extends TaskDetailEntity {
               map['priority'] < Priority.values.length
           ? Priority.values[map['priority']]
           : Priority.low,
-      isCompleted: map['isCompleted'] == true,
       comments:
           (map['comments'] as List<dynamic>?)
               ?.map(
@@ -90,8 +88,6 @@ class TaskDetailModel extends TaskDetailEntity {
               )
               .toList() ??
           [],
-      labelIds: List<String>.from(map['labelIds'] ?? []),
-      tagIds: List<String>.from(map['tagIds'] ?? []),
       subtasks:
           (map['subtasks'] as List<dynamic>?)
               ?.map(
@@ -126,12 +122,11 @@ class TaskDetailModel extends TaskDetailEntity {
     'id': id,
     'title': title,
     'projectId': projectId,
-    'actionItemsIds': actionItemsIds,
+    'spaceId': spaceId,
     'assigneeIds': assigneeIds,
-    'status': taskStatus?.index,
+    'status': taskStatus.index,
     'deadline': deadline?.toIso8601String(),
-    'priority': priority?.index,
-    'isCompleted': isCompleted,
+    'priority': priority.index,
     'comments': comments
         .map(
           (e) => {
@@ -161,7 +156,7 @@ class TaskDetailModel extends TaskDetailEntity {
     'labelIds': labels,
     'tagIds': tags,
     'subtasks': subtasks
-        ?.map(
+        .map(
           (e) => {
             'id': e.id,
             'title': e.title,
@@ -189,17 +184,14 @@ class TaskDetailModel extends TaskDetailEntity {
       id: entity.id,
       title: entity.title,
       projectId: entity.projectId,
-      actionItemsIds: entity.actionItemsIds,
+      spaceId: entity.spaceId,
       assigneeIds: entity.assigneeIds,
       taskStatus: entity.taskStatus,
       deadline: entity.deadline,
       priority: entity.priority,
-      isCompleted: entity.isCompleted,
       comments: entity.comments,
       checklist: entity.checklist,
       reminders: entity.reminders,
-      labelIds: entity.labels,
-      tagIds: entity.tags,
       subtasks: entity.subtasks,
       commentsCount: entity.commentsCount,
       attachmentsCount: entity.attachmentsCount,
@@ -210,18 +202,16 @@ class TaskDetailModel extends TaskDetailEntity {
     );
   }
 
-  @override
   TaskDetailEntity toEntity() {
     return TaskDetailEntity(
       id: id,
       title: title,
       projectId: projectId,
-      actionItemsIds: actionItemsIds,
+      spaceId: spaceId,
       assigneeIds: assigneeIds,
       taskStatus: taskStatus,
       deadline: deadline,
       priority: priority,
-      isCompleted: isCompleted,
       comments: comments,
       checklist: checklist,
       reminders: reminders,

@@ -5,6 +5,8 @@ class TaskAttachmentIdParams extends BaseTaskParams {
 
   const TaskAttachmentIdParams({
     required super.taskId,
+    required super.spaceId,
+
     required this.attachmentId,
   });
 }

@@ -6,6 +6,8 @@ class UpdateTaskChecklistItemParams extends BaseTaskParams {
 
   const UpdateTaskChecklistItemParams({
     required super.taskId,
+    required super.spaceId,
+
     required this.content,
     required this.checklistItemId,
   });

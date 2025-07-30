@@ -7,6 +7,8 @@ class UpdateTaskAttachmentParams extends BaseTaskParams {
 
   const UpdateTaskAttachmentParams({
     required super.taskId,
+    required super.spaceId,
+
     required this.fileUrl,
     required this.fileName,
     required this.attachmentId,

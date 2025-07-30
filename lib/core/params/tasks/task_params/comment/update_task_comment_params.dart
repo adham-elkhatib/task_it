@@ -6,6 +6,8 @@ class UpdateTaskCommentParams extends BaseTaskParams {
 
   const UpdateTaskCommentParams({
     required super.taskId,
+    required super.spaceId,
+
     required this.content,
     required this.commentId,
   });

@@ -5,6 +5,8 @@ class TaskChecklistItemIdParams extends BaseTaskParams {
 
   const TaskChecklistItemIdParams({
     required super.taskId,
+    required super.spaceId,
+
     required this.checklistItemId,
   });
 }

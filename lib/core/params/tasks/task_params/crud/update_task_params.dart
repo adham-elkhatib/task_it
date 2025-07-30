@@ -11,6 +11,8 @@ class UpdateTaskParams extends BaseTaskParams {
 
   const UpdateTaskParams({
     required super.taskId,
+    required super.spaceId,
+
     this.title,
     this.assigneeIds,
     this.deadline,

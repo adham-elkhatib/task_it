@@ -3,5 +3,9 @@ import '../../base_task_params.dart';
 class CreateTaskCommentParams extends BaseTaskParams {
   final String content;
 
-  const CreateTaskCommentParams({required super.taskId, required this.content});
+  const CreateTaskCommentParams({
+    required super.taskId,
+    required super.spaceId,
+    required this.content,
+  });
 }

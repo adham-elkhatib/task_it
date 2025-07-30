@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import '../../../project/domain/entities/priority_enum.dart';
 import '../../../project/domain/entities/status_enum.dart';
-import '../../domain/entities/subtask_entity.dart';
 import '../../domain/entities/task_entity.dart';
 
 class TaskModel extends TaskEntity {
@@ -10,19 +9,17 @@ class TaskModel extends TaskEntity {
     required super.id,
     super.title,
     super.projectId,
-    super.actionItemsIds,
     super.assigneeIds,
     super.taskStatus,
     super.deadline,
     super.priority,
-    super.isCompleted,
     super.commentsCount,
     super.attachmentsCount,
-    super.subtasks,
     super.createdBy,
     super.createdAt,
     super.updatedBy,
     super.updatedAt,
+    required super.spaceId,
   });
 
   factory TaskModel.fromMap(Map<String, dynamic> map) {
@@ -30,7 +27,7 @@ class TaskModel extends TaskEntity {
       id: map['id'] ?? '',
       title: map['title'],
       projectId: map['projectId'],
-      actionItemsIds: List<String>.from(map['actionItemsIds'] ?? []),
+      spaceId: map['spaceId'],
       assigneeIds: List<String>.from(map['assigneeIds'] ?? []),
       taskStatus: map['status'] != null
           ? TaskStatus.values[map['status']]
@@ -44,24 +41,8 @@ class TaskModel extends TaskEntity {
               map['priority'] < Priority.values.length
           ? Priority.values[map['priority']]
           : Priority.low,
-      isCompleted: map['isCompleted'] == true,
       commentsCount: map['commentsCount'],
       attachmentsCount: map['attachmentsCount'],
-      subtasks: (map['subtasks'] as List<dynamic>?)
-          ?.map(
-            (e) => SubtaskEntity(
-              id: e['id'],
-              title: e['title'],
-              isCompleted: e['isCompleted'],
-              assigneeIds: e['assigneeIds'] != null
-                  ? List<String>.from(e['assigneeIds'])
-                  : null,
-              deadline: e['deadline'] != null
-                  ? DateTime.tryParse(e['deadline'])
-                  : null,
-            ),
-          )
-          .toList(),
       createdBy: map['createdBy'],
       createdAt: map['createdAt'] != null
           ? DateTime.tryParse(map['createdAt'])
@@ -79,23 +60,11 @@ class TaskModel extends TaskEntity {
     'projectId': projectId,
     'actionItemsIds': actionItemsIds,
     'assigneeIds': assigneeIds,
-    'status': taskStatus?.index,
+    'status': taskStatus.index,
     'deadline': deadline?.toIso8601String(),
-    'priority': priority?.index,
-    'isCompleted': isCompleted,
+    'priority': priority.index,
     'commentsCount': commentsCount,
     'attachmentsCount': attachmentsCount,
-    'subtasks': subtasks
-        ?.map(
-          (e) => {
-            'id': e.id,
-            'title': e.title,
-            'isCompleted': e.isCompleted,
-            'assigneeIds': e.assigneeIds,
-            'deadline': e.deadline?.toIso8601String(),
-          },
-        )
-        .toList(),
     'createdBy': createdBy,
     'createdAt': createdAt?.toIso8601String(),
     'updatedBy': updatedBy,
@@ -112,15 +81,13 @@ class TaskModel extends TaskEntity {
       id: entity.id,
       title: entity.title,
       projectId: entity.projectId,
-      actionItemsIds: entity.actionItemsIds,
+      spaceId: entity.spaceId,
       assigneeIds: entity.assigneeIds,
       taskStatus: entity.taskStatus,
       deadline: entity.deadline,
       priority: entity.priority,
-      isCompleted: entity.isCompleted,
       commentsCount: entity.commentsCount,
       attachmentsCount: entity.attachmentsCount,
-      subtasks: entity.subtasks,
       createdBy: entity.createdBy,
       createdAt: entity.createdAt,
       updatedBy: entity.updatedBy,
@@ -133,15 +100,13 @@ class TaskModel extends TaskEntity {
       id: id,
       title: title,
       projectId: projectId,
-      actionItemsIds: actionItemsIds,
+      spaceId: spaceId,
       assigneeIds: assigneeIds,
       taskStatus: taskStatus,
       deadline: deadline,
       priority: priority,
-      isCompleted: isCompleted,
       commentsCount: commentsCount,
       attachmentsCount: attachmentsCount,
-      subtasks: subtasks,
       createdBy: createdBy,
       createdAt: createdAt,
       updatedBy: updatedBy,

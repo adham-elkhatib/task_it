@@ -6,6 +6,8 @@ class CreateTaskAttachmentParams extends BaseTaskParams {
 
   const CreateTaskAttachmentParams({
     required super.taskId,
+    required super.spaceId,
+
     required this.fileUrl,
     required this.fileName,
   });

@@ -18,9 +18,9 @@ mixin TaskAssigneesImpl on BaseTaskRepositoryContext {
       id: params.taskId,
       title: "params.title",
       projectId: "params.projectId",
+      spaceId: params.spaceId,
       priority: Priority.values[0],
       deadline: DateTime.now(),
-      actionItemsIds: const [],
       assigneeIds: [],
       taskStatus: TaskStatus.values[0],
     );
@@ -41,7 +41,6 @@ mixin TaskAssigneesImpl on BaseTaskRepositoryContext {
       projectId: "params.projectId",
       priority: Priority.values[0],
       deadline: DateTime.now(),
-      actionItemsIds: const [],
       assigneeIds: [],
       taskStatus: TaskStatus.values[0],
     );
